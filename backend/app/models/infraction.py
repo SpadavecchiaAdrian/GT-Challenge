@@ -12,4 +12,4 @@ class Infraction(Base):
     vehicle_id: Mapped[int] = mapped_column(ForeignKey("vehicles.id"))
     vehicle: Mapped[Vehicle] = relationship()
     timestamp: Mapped[int]
-    coments: Mapped[str]
+    comments: Mapped[str]
