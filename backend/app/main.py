@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from app.routers import persons, vehicles, officers  # , infractions
+from app.routers import persons, vehicles, officers, infractions
 
 
 # Solo para test, crear tablas

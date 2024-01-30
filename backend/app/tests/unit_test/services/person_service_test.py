@@ -44,7 +44,8 @@ def some_people(db: Session, clean_people):
 
 def test_should_create_person(db: Session, clean_people):
     """when an person is save, an id is assigned into the db,
-    as result, the person representation should be returned as part of the response
+    as result, the person representation should be returned as
+    part of the response
     """
     input_person = PersonCreate(name="test", email="test@some.com")
     saved_person = person_service.create(db=db, obj_in=input_person)

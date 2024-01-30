@@ -10,4 +10,4 @@ class Person(Base):
     uid: Mapped[int] = mapped_column("id", primary_key=True, index=True)
     email: Mapped[str] = mapped_column(index=True)
     name: Mapped[str]
-    # vehicles: Mapped[list["Vehicle"]] = relationship(back_populates="owner")
+    vehicles: Mapped[list["Vehicle"]] = relationship(back_populates="owner")

@@ -8,7 +8,7 @@ from app.models.person import Person
 class Vehicle(Base):
     __tablename__ = "vehicles"
 
-    uid: Mapped[int] = mapped_column(primary_key=True, index=True)
+    uid: Mapped[int] = mapped_column("id", primary_key=True, index=True)
 
     plate: Mapped[str] = mapped_column(index=True)
     brand: Mapped[str]

@@ -44,7 +44,8 @@ def some_vehicles(db: Session, clean_vehicles):
 
 def test_should_create_vehicle(db: Session, clean_vehicles):
     """when an vehicle is save, an id is assigned into the db,
-    as result, the vehicle representation should be returned as part of the response
+    as result, the vehicle representation should be returned as
+    part of the response
     """
     input_vehicle = VehicleCreate(
         plate="abc123", brand="one", color="blue", owner_id=1
