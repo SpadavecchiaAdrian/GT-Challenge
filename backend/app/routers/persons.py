@@ -92,8 +92,7 @@ def delete_person(
     db: Session = Depends(deps.get_db),
 ):
     delete_result = person_service.remove(db=db, uid=person_id)
-
-    if delete_result is True:
+    if delete_result is not None:
         return Response(status_code=status.HTTP_204_NO_CONTENT)
     else:
         raise HTTPException(
