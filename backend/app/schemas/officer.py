@@ -9,6 +9,7 @@ class OfficerBase(BaseModel):
 # Properties to receive on item creation
 class OfficerCreate(OfficerBase):
     name: str
+    password: str
 
 
 # Properties to receive on item update
@@ -30,4 +31,4 @@ class Officer(OfficerInDBBase):
 
 # Properties properties stored in DB
 class OfficerInDB(OfficerInDBBase):
-    pass
+    hashed_password: str

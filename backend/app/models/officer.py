@@ -9,4 +9,5 @@ class Officer(Base):
 
     uid: Mapped[int] = mapped_column("id", primary_key=True, index=True)
     name: Mapped[str]
+    hashed_password: Mapped[str]
     # infractions: Mapped[Infraction] = relationship(back_populates="officer")

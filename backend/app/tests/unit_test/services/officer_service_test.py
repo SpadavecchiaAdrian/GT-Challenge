@@ -7,29 +7,15 @@ from app.schemas.officer import (
     OfficerUpdate,
 )
 from app.services.officer_service import officer_service
-
-
-@pytest.fixture
-def clean_officers(db: Session):
-    yield None
-    db.query(OfficerMD).delete()
-
-
-@pytest.fixture
-def one_officer(db: Session, clean_officers):
-    p1 = OfficerMD(name="test")
-    db.add(p1)
-    db.commit()
-    db.refresh(p1)
-    return Officer.model_validate(p1)
+from app.core.security import get_password_hash
 
 
 @pytest.fixture
 def some_officers(db: Session, clean_officers):
     officers = [
-        OfficerMD(name="test1"),
-        OfficerMD(name="test2"),
-        OfficerMD(name="test3"),
+        OfficerMD(name="test1", hashed_password=get_password_hash("1234")),
+        OfficerMD(name="test2", hashed_password=get_password_hash("1234")),
+        OfficerMD(name="test3", hashed_password=get_password_hash("1234")),
     ]
     db.add_all(officers)
     db.commit()
@@ -47,7 +33,7 @@ def test_should_create_officer(db: Session, clean_officers):
     as result, the officer representation should be returned as
     part of the response
     """
-    input_officer = OfficerCreate(name="test")
+    input_officer = OfficerCreate(name="test", password="1234")
     saved_officer = officer_service.create(db=db, obj_in=input_officer)
     assert isinstance(saved_officer, Officer)
     assert isinstance(saved_officer.uid, int)
