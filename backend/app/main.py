@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from app.routers import persons, vehicles, officers, infractions, login
+from app.routers import persons, vehicles, officers, infractions, login, report
 
 
 # Solo para test, crear tablas
@@ -28,3 +28,5 @@ app.include_router(
     infractions.router,
     tags=["infraction"],
 )
+
+app.include_router(report.router, tags=["report"])

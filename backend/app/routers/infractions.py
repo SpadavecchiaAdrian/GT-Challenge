@@ -14,7 +14,10 @@ from app.schemas.infraction import (
 
 from app.core import deps
 from sqlalchemy.orm import Session
-from app.services.infraction_service import infraction_service, VehicleNoExist
+from app.services.infraction_service import (
+    infraction_service,
+    VehicleException,
+)
 
 from app.schemas.officer import Officer
 
@@ -38,7 +41,7 @@ def create_infraction(
         created_infraction = infraction_service.create(
             db=db, obj_in=infraction
         )
-    except VehicleNoExist as e:
+    except VehicleException as e:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=str(e),

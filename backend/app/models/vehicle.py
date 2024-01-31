@@ -14,4 +14,7 @@ class Vehicle(Base):
     brand: Mapped[str]
     color: Mapped[str]
     owner_id: Mapped[int] = mapped_column(ForeignKey("people.id"))
-    owner: Mapped[Person] = relationship(back_populates="vehicles")
+    owner: Mapped["Person"] = relationship(back_populates="vehicles")
+    infractions: Mapped[list["Infraction"]] = relationship(
+        back_populates="vehicle"
+    )

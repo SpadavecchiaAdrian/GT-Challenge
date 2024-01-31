@@ -10,12 +10,6 @@ from app.services.vehicle_service import vehicle_service
 
 
 @pytest.fixture
-def clean_vehicles(db: Session):
-    yield None
-    db.query(VehicleMD).delete()
-
-
-@pytest.fixture
 def one_vehicle(db: Session, clean_vehicles):
     p1 = VehicleMD(plate="abc123", brand="one", color="blue", owner_id=1)
     db.add(p1)

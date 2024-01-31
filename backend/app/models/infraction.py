@@ -10,6 +10,6 @@ class Infraction(Base):
 
     uid: Mapped[int] = mapped_column("id", primary_key=True, index=True)
     vehicle_id: Mapped[int] = mapped_column(ForeignKey("vehicles.id"))
-    vehicle: Mapped[Vehicle] = relationship()
+    vehicle: Mapped["Vehicle"] = relationship(back_populates="infractions")
     timestamp: Mapped[int]
     comments: Mapped[str]

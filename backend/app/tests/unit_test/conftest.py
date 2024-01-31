@@ -3,6 +3,9 @@ from fastapi.testclient import TestClient
 from sqlalchemy.orm import Session
 from typing import Generator
 from app.models.officer import Officer as OfficerMD
+from app.models.vehicle import Vehicle as VehicleMD
+from app.models.person import Person as PersonMD
+from app.models.infraction import Infraction as InfractionMD
 from app.db.database import SessionLocal
 from app.main import app
 from app.core.security import get_password_hash
@@ -33,3 +36,22 @@ def one_officer(db: Session, clean_officers):
     db.commit()
     db.refresh(p1)
     return Officer.model_validate(p1)
+
+
+@pytest.fixture(scope="function")
+def clean_vehicles(db: Session):
+    yield None
+    db.query(VehicleMD).delete()
+
+
+@pytest.fixture(scope="function")
+def clean_people(db: Session):
+    yield None
+    db.query(PersonMD).delete()
+
+
+@pytest.fixture(scope="function")
+def clean_infractions(db: Session):
+    yield None
+    db.query(InfractionMD).delete()
+    db.query(VehicleMD).delete()

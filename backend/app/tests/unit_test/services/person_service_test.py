@@ -10,12 +10,6 @@ from app.services.person_service import person_service
 
 
 @pytest.fixture
-def clean_people(db: Session):
-    yield None
-    db.query(PersonMD).delete()
-
-
-@pytest.fixture
 def one_person(db: Session, clean_people):
     p1 = PersonMD(name="test", email="test@some.com")
     db.add(p1)

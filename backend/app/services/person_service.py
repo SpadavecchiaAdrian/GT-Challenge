@@ -3,6 +3,10 @@ from app.models.person import Person as PersonMD
 from app.schemas.person import Person
 
 
+class PersonException(Exception):
+    pass
+
+
 class PersonService(CRUDBase):
     pass
 
