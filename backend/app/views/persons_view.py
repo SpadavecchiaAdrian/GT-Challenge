@@ -60,11 +60,9 @@ async def get_person_list(
 
 @router.get("/add_person", response_class=HTMLResponse)
 async def add_person(request: Request):
-    context = {"form": {"uid": "", "name": "", "email": ""}}
     return templates.TemplateResponse(
         request=request,
         name="partial/person/add_person.html",
-        context=context,
     )
 
 
