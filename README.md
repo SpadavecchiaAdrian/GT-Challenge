@@ -8,8 +8,13 @@ Challenge for GlobalTask
 - FastAPI
 - SQLAlchemy
 - htmx
+- GNU Make (necesario para correr comandos fácilmente)
 
-## Setup
+## Acerca de app.env
+
+Este archivo es sólo de ejemplo, en caso de utilizarse para producción copiar y renombrar a .env
+Deben reemplazarse los campos correctamente.
+Se recomienda el uso de SecretsManager y no de variables de ambiente.
 
 ## Supuestos
 
@@ -20,6 +25,10 @@ Challenge for GlobalTask
 
 ## Mejoras
 
+- generar un docker compose para trabajo local.
+- montar CORS
+- test unitarios para routers
+- test de integración
 - sistema de usuarios para administar person, vehículo, oficiales e infracción
 - la interfaz necesita autenticación y autorización
 - paginación en interfaces
@@ -60,14 +69,33 @@ curl -X 'POST' \
 
 ## Comandos
 
-generar interfaces
+pull de imágen:
 
-chequear que endpoint api generar infracción devuelva 500
-indicar como generar token
+```bash
+docker pull aspadavecchia/fastapi_htmx
+```
 
-5. Por último, cree una imagen Docker que permita ejecutar todos los componentes
-   de la solución (servidor de apps, bd, etc) y súbala al repo público de Docker, de
-   forma que esta pueda ser descargada y ejecutada fácilmente.
+El resto de comandos están disponble a través de make. los cuales son auto documentado.
+
+Ej ver comandos:
+
+```bash
+$ make
+```
+
+```bash
+
+docker-build                   build the docker image
+local-run                      Run FastAPI locally
+local-test                     run test locally
+
+```
+
+Ej correr la app localmente
+
+```bash
+$ make local-run
+```
 
 # Arquitectura en AWS
 
@@ -83,15 +111,19 @@ Es importante destacar que la base de datos debe de desplegarse en una subnet pr
 
 Route53: administración de entradas de dns, simplifica la gestión de otros servicios como load balancer. de costo muy bajo.
 
-AWS EKR: almacenamiento de imágenes privadas docker
+AWS EKR: almacenamiento de imágenes privadas docker.
 
-AWS ECS: aquí se montan las imágenes, permite simple gestión a través de de task y services. Implementación sensilla de logs con aws CloudWatch. También permite la captura de métricas para su monitoreo.
+AWS ECS: Aquí se montan las imágenes, permite simple gestión a través de de task y services. Implementación sensilla de logs con aws CloudWatch. También permite la captura de métricas para su monitoreo.
 Otros puntos importantes son la simple configuración de Healt checks, posible despliegue Blue/Green.
 
-Elastic Load Balancing: Balanceo de carga y routing son indispensables si el tráfico es elevado. Es recomendable el uso de Application Load Balancer evitando Load balancer Tradicional ya que provee mejores features. Como simple enlace y setup con ECS, gestiona el trafico en caso de despliegue Blue/Green.
+Elastic Load Balancing: Balanceo de carga y routing son indispensables si el tráfico es elevado. Es recomendable el uso de Application Load Balancer evitando Load balancer Tradicional ya que provee mejores features. provee simple enlace y setup con ECS, gestiona el trafico en caso de despliegue Blue/Green.
+
+WAF: Implementado con Load Balancer, ofrece protección contra ataques de bots, filtrado de tráfico web, prevención de fraude SQL injection.
 
 RDS: Base de datos relacional con multiples motores, escalable y de fácil configuración.
 
-SecretsManager: Gestion de secretos, aqui debe guardarse las credenciales de DB y otros servicios delicados, permite la rotación de credenciales sin necesidad de reiniciar servicios ya que el proceso de la app puede solicitarlos y no por variables de ambiente.
+ElastiCache: Compatible con Redis, para cache de DB, sesiones, etc
+
+SecretsManager: Gestion de secretos, aqui debe guardarse las credenciales de DB y otros servicios delicados, permite la rotación de credenciales sin necesidad de reiniciar servicios. El proceso de rotación en el servicio lo realiza automáticamente ECS, debe setearse las variables con el secreat al definir la tarea.
 
 CI/CD: dependiendo el proveedor de repositorio git. Puede ser GithubActions o si se se trabaja con CodeCommit (repositorio git de aws) pueden utilizarse CodePipeline para la gestion del pipeline y CodeBuild para build de imágen y correr test.
