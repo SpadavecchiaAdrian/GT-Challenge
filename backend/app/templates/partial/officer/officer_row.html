@@ -1,25 +1,20 @@
 <tr>
   <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-    <div class="text-sm leading-5 text-gray-900">{{ vehicle.uid }}</div>
+    <div class="text-sm leading-5 text-gray-900">{{ officer.uid }}</div>
   </td>
   <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-    <div class="text-sm leading-5 text-gray-900">{{ vehicle.plate }}</div>
+    <div class="text-sm leading-5 text-gray-900">{{ officer.name }}</div>
   </td>
   <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-    <div class="text-sm leading-5 text-gray-900">{{ vehicle.brand }}</div>
+    <div class="text-sm leading-5 text-gray-900">********</div>
   </td>
-  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-    <div class="text-sm leading-5 text-gray-900">{{ vehicle.color }}</div>
-  </td>
-  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-    <div class="text-sm leading-5 text-gray-900">{{ vehicle.owner_id }}</div>
-  </td>
+
   <td
     class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200"
   >
     <button
       class="btn text-indigo-600 hover:text-indigo-900"
-      hx-get="{{ url_for('edit_vehicle', vehicle_id=vehicle.uid)}}"
+      hx-get="{{ url_for('edit_officer', officer_id=officer.uid)}}"
       hx-target="closest tr"
       hx-swap="outerHTML"
     >
@@ -47,7 +42,7 @@
       hx-confirm="Are you sure?"
       hx-target="closest tr"
       hx-swap="outerHTML"
-      hx-delete="{{ url_for('delete_vehicle', vehicle_id=vehicle.uid)}}"
+      hx-delete="{{ url_for('delete_officer', officer_id=officer.uid)}}"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

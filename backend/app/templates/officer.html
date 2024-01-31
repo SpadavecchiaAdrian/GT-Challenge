@@ -45,30 +45,30 @@
               Home
             </a>
             <a
+              href="{{ url_for('person_interface') }}"
+              class="px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600"
+            >
+              Personas
+            </a>
+            <a
               href="{{ url_for('vehicle_interface') }}"
               class="px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600"
             >
-              vehiculo
-            </a>
-            <a
-              href="{{ url_for('officer_interface') }}"
-              class="px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600"
-            >
-              Oficial
+              Vehículo
             </a>
           </div>
           <div class="mb-4">
-            <h1 class="text-3xl font-bold underline">Personas</h1>
+            <h1 class="text-3xl font-bold underline">Oficiales</h1>
             <div class="flex justify-end">
-              <button hx-get="{{ url_for('add_person') }}" hx-target="next tbody" hx-swap="afterbegin"
+              <button hx-get="{{ url_for('add_officer') }}" hx-target="next tbody" hx-swap="afterbegin"
                 class="px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600"
               >
-                Create Persona
+                Create Oficial
               </button>
             </div>
           </div>
 
-        <!-- <button class='btn' hx-get="{{ url_for('add_person') }}" hx-target="next tbody" hx-swap="afterbegin">
+        <!-- <button class='btn' hx-get="{{ url_for('add_officer') }}" hx-target="next tbody" hx-swap="afterbegin">
           <svg class="bi bi-plus" width="32" height="32">
             <use xlink:href="#plus">
           </svg>
@@ -78,7 +78,7 @@
             <div
               class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg"
             >
-              <div id="query_result" hx-target="this" hx-swap="innerHTML" hx-get="{{ url_for('get_person_list') }}" hx-trigger="load"></div> 
+              <div id="query_result" hx-target="this" hx-swap="innerHTML" hx-get="{{ url_for('get_officer_list') }}" hx-trigger="load"></div> 
             </div>
           </div>
         </div>

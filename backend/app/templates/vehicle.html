@@ -51,10 +51,10 @@
               Personas
             </a>
             <a
-              href="interfaces/officer"
+              href="{{ url_for('officer_interface') }}"
               class="px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600"
             >
-              oficial
+              Oficial
             </a>
           </div>
           <div class="mb-4">
@@ -78,7 +78,7 @@
             <div
               class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg"
             >
-              <div id="query_result" hx-target="this" hx-swap="innerHTML" hx-get="{{ url_for('get_vehicle_list') }}" hx-trigger="load delay:1s"></div> 
+              <div id="query_result" hx-target="this" hx-swap="innerHTML" hx-get="{{ url_for('get_vehicle_list') }}" hx-trigger="load"></div> 
             </div>
           </div>
         </div>
