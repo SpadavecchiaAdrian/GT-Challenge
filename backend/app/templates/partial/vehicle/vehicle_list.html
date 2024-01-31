@@ -1,0 +1,39 @@
+<table class="min-w-full">
+  <thead>
+    <th
+      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
+    >
+      ID
+    </th>
+    <th
+      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
+    >
+      Patente
+    </th>
+    <th
+      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
+    >
+      Marca
+    </th>
+    <th
+      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
+    >
+      Color
+    </th>
+    <th
+      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
+    >
+      ID Dueño
+    </th>
+    <th
+      class="px-6 py-3 text-sm text-center text-gray-500 border-b border-gray-200 bg-gray-50"
+      colspan="2"
+    >
+      Action
+    </th>
+  </thead>
+  <tbody class="bg-white">
+    {% for vehicle in vehicles %} {% include 'partial/vehicle/vehicle_row.html'
+    %} {% endfor %}
+  </tbody>
+</table>

@@ -8,7 +8,7 @@ from app.routers import (
     login,
     report,
 )
-from app.views import persons_view, home_view, login_view
+from app.views import home_view, persons_view, vehicle_view, login_view
 
 
 # Solo para test, crear tablas
@@ -22,10 +22,10 @@ app = FastAPI()
 
 
 # Views
-
 app.include_router(home_view.router)
 app.include_router(login_view.router)
 app.include_router(persons_view.router, prefix="/people")
+app.include_router(vehicle_view.router, prefix="/vehicle")
 
 # API
 app.include_router(login.router, prefix=settings.API_V1_STR, tags=["login"])
