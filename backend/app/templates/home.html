@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="container max-w-7xl mx-auto mt-8">
+      <div class="mb-4">
+        <h1 class="text-3xl">Challenge</h1>
+      </div>
+      <div class="mb-4">
+        <a
+          href="{{ url_for('person_interface') }}"
+          class="px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600"
+        >
+          Interface
+        </a>
+      </div>
+      <div class="mb-4">
+        <a
+          href="{{ url_for('login_interface') }}"
+          class="px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600"
+        >
+          Token / login
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

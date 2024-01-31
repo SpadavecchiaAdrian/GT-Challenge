@@ -69,7 +69,7 @@ class CRUDBase(
             db.add(item)
             db.commit()
             db.refresh(item)
-            return item
+            return self.schema.model_validate(item)
 
     def remove(self, db: Session, *, uid: int) -> SchemaType | None:
         obj = db.query(self.model).filter(self.model.uid == uid).one_or_none()

@@ -1,0 +1,56 @@
+<tr>
+  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"></td>
+  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+    <input type="text" name="name" id="name" class="bg-gray-50 border
+    border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-sky-600
+    focus:border-sky-600 block w-full p-2.5" value="{{ form["name"] }}" required
+    />
+  </td>
+  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+    <input type="email" name="email" id="email" class="bg-gray-50 border
+    border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-sky-600
+    focus:border-sky-600 block w-full p-2.5" value="{{ form["email"] }}"
+    required />
+  </td>
+
+  <td
+    class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200"
+  >
+    <a
+      href="#"
+      hx-post="{{ url_for('edit_person_submit', person_id=person.uid) }}"
+      hx-target="closest tr"
+      hx-swap="outerHTML"
+      hx-include="closest tr"
+      class="text-indigo-600 hover:text-indigo-900"
+    >
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <use xlink:href="#checkmark" />
+      </svg>
+    </a>
+  </td>
+  <td
+    class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200"
+  >
+    <a
+      href="#"
+      hx-get="{{ url_for('cancel_edit_person_submit', person_id=person.uid) }}"
+      hx-target="closest tr"
+      hx-swap="outerHTML"
+      class="text-sm font-medium leading-5 text-center whitespace-no-wrap border-b border-gray-200"
+      ><svg
+        class="w-6 h-6 text-red-600 hover:text-red-800"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <use xlink:href="#cancel" />
+      </svg>
+    </a>
+  </td>
+</tr>

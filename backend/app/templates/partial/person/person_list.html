@@ -1,0 +1,29 @@
+<table class="min-w-full">
+  <thead>
+    <th
+      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
+    >
+      ID
+    </th>
+    <th
+      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
+    >
+      Name
+    </th>
+    <th
+      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
+    >
+      Email
+    </th>
+    <th
+      class="px-6 py-3 text-sm text-center text-gray-500 border-b border-gray-200 bg-gray-50"
+      colspan="2"
+    >
+      Action
+    </th>
+  </thead>
+  <tbody class="bg-white">
+    {% for person in people %} {% include 'partial/person/person_row.html' %} {%
+    endfor %}
+  </tbody>
+</table>

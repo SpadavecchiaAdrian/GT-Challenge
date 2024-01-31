@@ -1,17 +1,33 @@
 from fastapi import FastAPI
 
-from app.routers import persons, vehicles, officers, infractions, login, report
+from app.routers import (
+    persons,
+    vehicles,
+    officers,
+    infractions,
+    login,
+    report,
+)
+from app.views import persons_view, home_view, login_view
 
 
 # Solo para test, crear tablas
 from app.db.database import Base, engine
 from app.core.config import settings
 
+
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
 
+# Views
+
+app.include_router(home_view.router)
+app.include_router(login_view.router)
+app.include_router(persons_view.router, prefix="/people")
+
+# API
 app.include_router(login.router, prefix=settings.API_V1_STR, tags=["login"])
 app.include_router(
     persons.router, prefix=f"{settings.API_V1_STR}/people", tags=["person"]
