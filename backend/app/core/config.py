@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 1440  # one day
 
     # service settings
+    SQLALCHEMY_DATABASE_URL: str = "sqlite:///./sql_app.db"
 
     model_config = SettingsConfigDict(
         case_sensitive=True, env_file="../app.env", env_file_encoding="utf-8"

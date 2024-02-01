@@ -25,10 +25,10 @@ docker-build: clean-pyc ## build the docker image
 	cd backend; poetry export -f requirements.txt --output requirements.txt --without-hashes
 	docker build -t fastapi_htmx:0.1.0 .
 
-docker-push:
+docker-push: ## push to repository
 	docker tag fastapi_htmx:0.1.0 aspadavecchia/fastapi_htmx:0.1.0
 	docker push aspadavecchia/fastapi_htmx:0.1.0
 
-docker-run:
+docker-run: ## run the container
 	docker run -p 8000:80 fastapi_htmx
 

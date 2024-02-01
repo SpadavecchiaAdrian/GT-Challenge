@@ -69,6 +69,20 @@ curl -X 'POST' \
 
 ## Comandos
 
+Poetry inicialización:
+
+```bash
+cd backend
+poetry install
+```
+
+Poetry activar:
+
+```bash
+cd backend
+poetry shell
+```
+
 pull de imágen:
 
 ```bash
@@ -84,8 +98,9 @@ $ make
 ```
 
 ```bash
-
 docker-build                   build the docker image
+docker-push                    push to repository
+docker-run                     run the container
 local-run                      Run FastAPI locally
 local-test                     run test locally
 
